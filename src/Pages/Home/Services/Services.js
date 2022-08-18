@@ -32,10 +32,10 @@ const Services = () => {
     <Box sx={{ flexGrow: 1 }}>
       <Container>
         <Typography>
-          <h4>Our Services</h4>
+          Our Services
         </Typography>
         <Typography>
-          <h2>Services We Provide</h2>
+          Services We Provide
         </Typography>
         <Grid
           container

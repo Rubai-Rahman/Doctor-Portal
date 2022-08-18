@@ -21,10 +21,10 @@ const AppointmentBanner = () => {
           <Typography>APPOINTMENT</Typography>
           <Typography>Make an Appointment Today</Typography>
           <Typography>
-            <p>
+           
               It is a long established fact that a reader will be distractby the
               readable content of a page when looki;ng at its
-            </p>
+            
           </Typography>
           <Link to="/">
             <Button>LEARN MORE</Button>

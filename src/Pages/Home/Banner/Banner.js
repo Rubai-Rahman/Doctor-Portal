@@ -24,14 +24,14 @@ const Banner = () => {
         <Grid item xs={12} md={5}>
           <Box style={verticalCenter}>
             <Typography>
-              <h1>Your New Smile Starts Here</h1>
+              Your New Smile Starts Here
             </Typography>
             <Typography>
-              <p>
+           
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
                 unde laborum error minus dolorum temporibus culpa rerum
                 consequuntur incidunt quam?
-              </p>
+             
             </Typography>
             <Link to="/appointment">
               <Button variant="contained">GET APPOINTMENT</Button>
