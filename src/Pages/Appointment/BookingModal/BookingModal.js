@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -19,12 +19,36 @@ const style = {
 };
 const BookingModal = ({ booking, handleClose, openBooking, date }) => {
   const { name, time } = booking;
-  const {user}=useAuth();
-  const handleBooking =e =>{
-    alert("sumbiting")
+  const { user } = useAuth();
+  const initialInfo = {
+    patientName: user.displayName,
+    email: user.email,
+    phone: "",
+  };
+  const [bookingInfo, setBookingInfo] = useState(initialInfo);
+
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newInfo = { ...bookingInfo };
+    newInfo[field] = value;
+    console.log(newInfo);
+    setBookingInfo(newInfo);
+    console.log(newInfo);
+  };
+
+  const handleBooking = (e) => {
+    const appointment = {
+      ...bookingInfo,
+      time,
+      serviceName: name,
+      date: date.toLocalDateString(),
+    };
+    console.log(appointment);
     e.preventDefault();
-    handleClose()
-  }
+    handleClose();
+  };
+
   return (
     <div>
       <Modal
@@ -37,7 +61,7 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {name}
           </Typography>
-          <form onSubmit={handleBooking} > 
+          <form onSubmit={handleBooking}>
             <TextField
               style={{ width: "90%" }}
               disabled
@@ -47,16 +71,22 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
             <TextField
               style={{ width: "90%" }}
               id="filled-disabled"
+              name="patientName"
+              onBlur={handleOnBlur}
               defaultValue={user.displayName}
             />
             <TextField
               style={{ width: "90%", m: 1 }}
               id="filled-disabled"
+              name="email"
+              onBlur={handleOnBlur}
               defaultValue={user.email}
             />
             <TextField
               style={{ width: "90%" }}
               id="filled-disabled"
+              name="phone"
+              onBlur={handleOnBlur}
               defaultValue="Phone Number"
             />
             <TextField
