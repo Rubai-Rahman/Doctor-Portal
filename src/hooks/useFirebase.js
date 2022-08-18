@@ -18,32 +18,41 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState('');
 
   //loginuser
-  const loginUser = (email, password) => {
+  const loginUser = (email, password,location,navigate) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        const destination = location?.state?.from || "/";
+        navigate(destination);
         // Signed in
         const user = userCredential.user;
+        setUser(user);
+
         // ...
       })
       .catch((error) => {
         setAuthError(error.message);
+        setUser({});
+
       })
       .finally(() => setIsLoading(false));
   };
 
-  //sign un
-  const registerUser = (email, password) => {
+  //sign up
+  const registerUser = (email, password ,location,navigate) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        const destination = location?.state?.from || "/";
+        navigate(destination);
         // Signed in
         const user = userCredential.user;
-        // ...
+        setUser(user);
+      
       })
       .catch((error) => {
         setAuthError(error.message);
-        // ..
+        setUser({});
       })
       .finally(() => setIsLoading(false));
   };

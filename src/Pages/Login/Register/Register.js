@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import login from "../../../assets/images/login.png";
 import useAuth from "../../../hooks/useAuth";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -16,6 +16,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 const Register = () => {
   const { user, registerUser, isLoading, authError } = useAuth();
   const [loginData, setLoginData] = useState({});
+  const location =useLocation();
+  const navigate = useNavigate();
+
   const handleOnChange = (e) => {
     const value = e.target.value;
     const field = e.target.name;
@@ -30,7 +33,7 @@ const Register = () => {
       alert("password dont match");
       return;
     }
-    registerUser(loginData.email, loginData.password);
+    registerUser(loginData.email,loginData.password,location,navigate);
 
     e.preventDefault();
   };
