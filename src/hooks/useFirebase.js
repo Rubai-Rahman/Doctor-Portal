@@ -6,25 +6,29 @@ import {
   signOut,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  updateProfile,
+  signInWithPopup,
 } from "firebase/auth";
-import { set } from "date-fns";
 
+const googleProvider = new GoogleAuthProvider();
 initializeFirebase();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const auth = getAuth();
   const [isLoading, setIsLoading] = useState(true);
-  const [authError, setAuthError] = useState('');
+  const [authError, setAuthError] = useState("");
 
-  //loginuser
-  const loginUser = (email, password,location,navigate) => {
+  //login user
+  const loginUser = (email, password, location, navigate) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const destination = location?.state?.from || "/";
         navigate(destination);
         // Signed in
+        setAuthError("");
         const user = userCredential.user;
         setUser(user);
 
@@ -33,22 +37,26 @@ const useFirebase = () => {
       .catch((error) => {
         setAuthError(error.message);
         setUser({});
-
       })
       .finally(() => setIsLoading(false));
   };
 
-  //sign up
-  const registerUser = (email, password ,location,navigate) => {
+  //Register
+  const registerUser = (email, password, name, location, navigate) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        setAuthError("");
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {})
+          .catch((error) => {});
         const destination = location?.state?.from || "/";
         navigate(destination);
-        // Signed in
-        const user = userCredential.user;
-        setUser(user);
-      
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -56,6 +64,25 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
+
+  const googleSignIn = (location, navigate) => {
+    setIsLoading(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        setAuthError("");
+        const user = result.user;
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        setAuthError(error.message);
+        setUser({});
+        // ...
+      })
+      .finally(() => setIsLoading(false));
+  };
+
   //observer
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
@@ -73,7 +100,7 @@ const useFirebase = () => {
 
   // logout
   const logOut = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     const auth = getAuth();
     signOut(auth)
       .then(() => {
@@ -90,6 +117,7 @@ const useFirebase = () => {
     authError,
     registerUser,
     loginUser,
+    googleSignIn,
     logOut,
   };
 };

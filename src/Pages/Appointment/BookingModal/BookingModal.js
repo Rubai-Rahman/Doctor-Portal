@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
+import useAuth from "../../../hooks/useAuth";
 
 const style = {
   position: "absolute",
@@ -18,6 +19,7 @@ const style = {
 };
 const BookingModal = ({ booking, handleClose, openBooking, date }) => {
   const { name, time } = booking;
+  const {user}=useAuth();
   const handleBooking =e =>{
     alert("sumbiting")
     e.preventDefault();
@@ -45,12 +47,12 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
             <TextField
               style={{ width: "90%" }}
               id="filled-disabled"
-              defaultValue="Name"
+              defaultValue={user.displayName}
             />
             <TextField
               style={{ width: "90%", m: 1 }}
               id="filled-disabled"
-              defaultValue="Email"
+              defaultValue={user.email}
             />
             <TextField
               style={{ width: "90%" }}
