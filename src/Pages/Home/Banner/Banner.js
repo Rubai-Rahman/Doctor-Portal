@@ -5,8 +5,9 @@ import { Button, Typography } from "@mui/material";
 import chair from "../../../assets/images/chair.png";
 import bg from "../../../assets/images/appointment.png";
 import { Link } from "react-router-dom";
+
 const bannerBg = {
-  background: `url(${bg})`,
+  background: `url(${bg}) `,
 };
 const verticalCenter = {};
 const frontImg = {
@@ -23,18 +24,35 @@ const Banner = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} md={5}>
           <Box style={verticalCenter}>
-            <Typography>
+            <Typography
+              variant="h2"
+              sx={{ fontWeight: 700, fontSize: 48, color: "#FFFFFF" }}
+            >
               Your New Smile Starts Here
             </Typography>
-            <Typography>
-           
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                unde laborum error minus dolorum temporibus culpa rerum
-                consequuntur incidunt quam?
-             
+            <Typography
+              sx={{ fontWeight: 400, fontSize: 16, color: "#FFFFFF" }}
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+              unde laborum error minus dolorum temporibus culpa rerum
+              consequuntur incidunt quam?
             </Typography>
-            <Link to="/appointment">
-              <Button variant="contained">GET APPOINTMENT</Button>
+            <Link
+              style={{
+                position: "absolute",
+                width: 150,
+                height: 40,
+                textDecoration: "none",
+                backgroundImage:
+                  "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+                borderRadius: 7,
+                color: "white",
+                textAlign: "justify",
+                marginRight:40
+              }}
+              to="/appointment"
+            >
+              <Button color="inherit">Get Appointment</Button>
             </Link>
           </Box>
         </Grid>

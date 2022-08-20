@@ -29,12 +29,27 @@ const services = [
 ];
 const Services = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, m: 8 }}>
       <Container>
-        <Typography>
+        <Typography
+          style={{
+            fontSize: "20",
+            fontWeight: 700,
+            color: "#19D3AE",
+            margin: 5,
+          }}
+        >
           Our Services
         </Typography>
-        <Typography>
+        <Typography
+          variant="h4"
+          gutterBottom
+          style={{
+            fontWeight: 400,
+            color: "#3A4256",
+            marginBottom: 40,
+          }}
+        >
           Services We Provide
         </Typography>
         <Grid
