@@ -25,6 +25,7 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
     email: user.email,
     phone: "",
   };
+
   const [bookingInfo, setBookingInfo] = useState(initialInfo);
 
   const handleOnBlur = (e) => {
@@ -32,19 +33,19 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
     const value = e.target.value;
     const newInfo = { ...bookingInfo };
     newInfo[field] = value;
-    console.log(newInfo);
-    setBookingInfo(newInfo);
-    console.log(newInfo);
+    console.log(newInfo)
+    setBookingInfo(newInfo)
+    
   };
+  console.log("hello");
 
   const handleBooking = (e) => {
     const appointment = {
-      ...bookingInfo,
       time,
       serviceName: name,
       date: date.toLocalDateString(),
     };
-    console.log(appointment);
+
     e.preventDefault();
     handleClose();
   };
@@ -81,31 +82,23 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
             />
             <TextField
               style={{ width: "90%" }}
-              id="filled-disabled"
               name="patientName"
               onBlur={handleOnBlur}
               defaultValue={user.displayName}
             />
             <TextField
               style={{ width: "90%", m: 1 }}
-              id="filled-disabled"
               name="email"
               onBlur={handleOnBlur}
               defaultValue={user.email}
             />
             <TextField
               style={{ width: "90%" }}
-              id="filled-disabled"
               name="phone"
               onBlur={handleOnBlur}
               defaultValue="Phone Number"
             />
-            <TextField
-              disabled
-              style={{ width: "90%" }}
-              id="filled-disabled"
-              defaultValue={date}
-            />
+            <TextField disabled style={{ width: "90%" }} defaultValue={date} />
             <Button
               type="submit"
               variant="contained"
@@ -114,8 +107,8 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
                 my: 1,
                 mr: 6,
                 backgroundImage:
-                "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
-              color: "white",
+                  "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+                color: "white",
                 float: "right",
               }}
             >

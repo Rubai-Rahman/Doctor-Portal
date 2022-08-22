@@ -23,7 +23,6 @@ const Login = () => {
     const field = e.target.name;
     const newLoginData = { ...loginData };
     newLoginData[field] = value;
-    console.log(newLoginData);
     setLoginData(newLoginData);
   };
 

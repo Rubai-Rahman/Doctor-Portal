@@ -21,6 +21,7 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState("");
 
   //login user
+
   const loginUser = (email, password, location, navigate) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
@@ -96,7 +97,7 @@ const useFirebase = () => {
       setIsLoading(false);
     });
     return () => unsubscribed;
-  }, []);
+  }, [auth]);
 
   // logout
   const logOut = () => {

@@ -11,10 +11,16 @@ const Booking = ({ booking, date }) => {
   return (
     <>
       <Grid item xs={12} sm={6} md={4}>
-        <Paper elevation={3}>
+        <Paper elevation={3} sx={{ margin: 2 }}>
           <Typography
             variant="h4"
-            sx={{ mt: 3, fontWeight: 500, fontSize: 30, color: "#19D3AE" }}
+            sx={{
+              mt: 3,
+              fontWeight: 500,
+              fontSize: 30,
+              color: "#19D3AE",
+              padding: 2,
+            }}
           >
             {name}
           </Typography>
