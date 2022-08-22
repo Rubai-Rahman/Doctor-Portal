@@ -13,65 +13,51 @@ const appointmentBg = {
 const AppointmentBanner = () => {
   return (
     <Box style={appointmentBg} sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} columns={16}>
         <Grid item xs={12} md={6}>
-          <img
-            style={{ width: 400, marginTop: "-120px" }}
-            src={doc}
-            alt="doctor img"
-          />
+          <img style={{ width: 400, marginTop: "-95px" }} src={doc} alt="" />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography
-            style={{
-              fontSize: "20",
-              fontWeight: 700,
-              color: "#19D3AE",
-              alignItems: "start",
-              
-            }}
-          >
-            APPOINTMENT
-          </Typography>
-          <Typography
-            variant="h4"
-            gutterBottom
-            style={{
-              fontWeight: 400,
-              color: "#FFFF",
-              marginBottom: 10,
-            }}
-          >
-            Make an Appointment Today
-          </Typography>
-          <Typography
-            sx={{
-              fontWeight: 400,
-              fontSize: 16,
-              color: "#FFFFFF",
-              marginBottom: 10,
-              textAlign: "start",
-            }}
-          >
-            It is a long established fact that a reader will be distractby the
-            readable content of a page when looki;ng at its
-          </Typography>
-          <Link
-            style={{
-              position: "absolute",
-              width: 150,
-              height: 40,
-              textDecoration: "none",
-              backgroundImage:
-                "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
-              borderRadius: 7,
-              color: "white",
-              textAlign: "justify",
-            }}
-            to="/appointment"
-          >
-            <Button color="inherit">Get Appointment</Button>
-          </Link>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            textAlign: "left",
+            marginLeft: "100px",
+          }}
+        >
+          <Box>
+            <Typography
+              variant="h6"
+              sx={{ mb: 3 }}
+              style={{ color: "#19D3AE" }}
+            >
+              Appointment
+            </Typography>
+            <Typography variant="h4" sx={{ my: 3 }} style={{ color: "white" }}>
+              Make an appointment Today
+            </Typography>
+            <Typography variant="body1" style={{ color: "white" }}>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point
+            </Typography>
+            <br />
+            <Link style={{ textDecoration: "none" }} to="/appointment">
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#19D3AE",
+                  backgroundImage:
+                    "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+                }}
+              >
+                Learn More
+              </Button>
+            </Link>
+          </Box>
         </Grid>
       </Grid>
     </Box>

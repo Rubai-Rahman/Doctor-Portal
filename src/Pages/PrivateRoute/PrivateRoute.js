@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 const PrivateRoute = () => {
   const location = useLocation();
   const auth = useAuth();
-  return auth?(
+  return auth ? (
     <Outlet />
   ) : (
     <Navigate to="/login" replace state={{ from: location }} />

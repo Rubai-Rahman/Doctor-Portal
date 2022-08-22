@@ -58,7 +58,18 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography
+            sx={{
+              color: "#19D3AE",
+              fontWeight: 600,
+              fontSize: 25,
+              marginBottom: 4,
+              textAlign: "center",
+            }}
+            id="transition-modal-title"
+            variant="h6"
+            component="h2"
+          >
             {name}
           </Typography>
           <form onSubmit={handleBooking}>
@@ -95,7 +106,19 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
               id="filled-disabled"
               defaultValue={date}
             />
-            <Button type="submit" variant="contained">
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                width: "30%",
+                my: 1,
+                mr: 6,
+                backgroundImage:
+                "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+              color: "white",
+                float: "right",
+              }}
+            >
               send
             </Button>
           </form>
