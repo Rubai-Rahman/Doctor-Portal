@@ -19,7 +19,7 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const BookingModal = ({ booking, handleClose, openBooking, date }) => {
+const BookingModal = ({ booking, handleClose, openBooking, date,setBookingSuccess }) => {
   const { name, time } = booking;
   const { user } = useAuth();
   const initialInfo = {
@@ -45,7 +45,7 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
       serviceName: name,
       date: date.toLocaleDateString(),
     };
-    
+    console.log(appointment);
     // send data to server
     fetch(`http://localhost:5000/appointments`, {
       method: "POST",
@@ -56,9 +56,12 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if(data.insertedId){
+          setBookingSuccess(true);
+          handleClose();
+        }
       });
-    handleClose();
+   
     e.preventDefault();
   };
 
@@ -77,14 +80,18 @@ const BookingModal = ({ booking, handleClose, openBooking, date }) => {
       >
         <Fade in={openBooking}>
           <Box sx={style}>
-            <Typography id="transition-modal-title"
-            sx={{
-              mt: 3,
-              fontWeight: 500,
-              fontSize: 30,
-              color: "#19D3AE",
-              padding: 2,
-            }} variant="h6" component="h2">
+            <Typography
+              id="transition-modal-title"
+              sx={{
+                mt: 3,
+                fontWeight: 500,
+                fontSize: 30,
+                color: "#19D3AE",
+                padding: 2,
+              }}
+              variant="h6"
+              component="h2"
+            >
               {name}
             </Typography>
             <form onSubmit={handleBooking}>

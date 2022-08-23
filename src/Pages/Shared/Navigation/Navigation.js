@@ -10,10 +10,13 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Navigation = () => {
-  const { user,logOut } = useAuth();
+  const { user, logOut } = useAuth();
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1  }}>
+      <AppBar position="static" style={{
+        backgroundImage:
+        "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+    }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -25,7 +28,7 @@ const Navigation = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-           Doctor Portal
+            Doctor Portal
           </Typography>
           <Link
             style={{ textDecoration: "none", fontSize: 20, color: "white" }}
@@ -40,7 +43,17 @@ const Navigation = () => {
             <Button color="inherit">Appointment</Button>
           </Link>
           {user?.email ? (
-            <Button onClick={logOut} color="inherit">Logout</Button>
+            <Box>
+              <Link
+                style={{ textDecoration: "none", fontSize: 20, color: "white" }}
+                to="/dashboard"
+              >
+                <Button color="inherit">Dashboard</Button>
+              </Link>
+              <Button onClick={logOut} color="inherit">
+                Logout
+              </Button>
+            </Box>
           ) : (
             <Link
               style={{ textDecoration: "none", fontSize: 20, color: "white" }}

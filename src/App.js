@@ -3,6 +3,7 @@ import "./App.css";
 import AuthProvider from "./contexts/AuthProvider";
 
 import Appointment from "./Pages/Appointment/Appointment/Appointment";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home/Home";
 import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
@@ -20,6 +21,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/*" element={<PrivateRoute />}>
               <Route exact path="appointment" element={<Appointment />} />
+              <Route exact path="dashboard" element={<Dashboard />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
