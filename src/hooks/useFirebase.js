@@ -28,6 +28,7 @@ const useFirebase = () => {
       .then((userCredential) => {
         const destination = location?.state?.from || "/";
         navigate(destination);
+
         // Signed in
         setAuthError("");
         const user = userCredential.user;
@@ -97,7 +98,7 @@ const useFirebase = () => {
       setIsLoading(false);
     });
     return () => unsubscribed;
-  }, [auth]);
+  }, []);
 
   // logout
   const logOut = () => {

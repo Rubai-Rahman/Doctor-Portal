@@ -36,7 +36,8 @@ const Booking = ({ booking, date }) => {
           <Button
             onClick={handleOpen}
             variant="contained"
-            sx={{ my: 3, backgroundColor: "#19D3AE" }}
+            sx={{ my: 3,  backgroundImage:
+              "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)", }}
           >
             BOOK APPOINTMENT
           </Button>

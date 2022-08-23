@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import login from "../../../assets/images/login.png";
 import useAuth from "../../../hooks/useAuth";
 
@@ -46,7 +46,6 @@ const Login = () => {
           <form onSubmit={handleLoginSubmit}>
             <TextField
               sx={{ width: 1, m: 2 }}
-              id="standard-basic"
               label="Your Email"
               name="email"
               onChange={handleOnChange}
@@ -56,7 +55,6 @@ const Login = () => {
             ></TextField>
             <TextField
               sx={{ width: 1, m: 2 }}
-              id="standard-basic"
               label="Password"
               name="password"
               onChange={handleOnChange}
@@ -65,7 +63,7 @@ const Login = () => {
               required
             ></TextField>
             <Button variant="contained" sx={{ width: 1, m: 2 }} type="submit">
-              submit
+              Log In
             </Button>
             <NavLink to="/register">New user Register </NavLink>
             <Button
