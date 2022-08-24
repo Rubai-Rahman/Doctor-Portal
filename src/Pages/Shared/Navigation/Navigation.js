@@ -12,11 +12,14 @@ import useAuth from "../../../hooks/useAuth";
 const Navigation = () => {
   const { user, logOut } = useAuth();
   return (
-    <Box sx={{ flexGrow: 1  }}>
-      <AppBar position="static" style={{
-        backgroundImage:
-        "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
-    }}>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+        }}
+        position="static"
+      >
         <Toolbar>
           <IconButton
             size="large"
@@ -42,6 +45,7 @@ const Navigation = () => {
           >
             <Button color="inherit">Appointment</Button>
           </Link>
+
           {user?.email ? (
             <Box>
               <Link

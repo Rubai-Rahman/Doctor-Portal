@@ -13,32 +13,35 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Navigation from "../Shared/Navigation/Navigation";
+import { Grid } from "@mui/material";
+import Calendar from "../Shared/Calendar/Calendar";
+import ReviewAppointments from "./ReviewAppointments/ReviewAppointments";
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const [date, setDate] = React.useState(new Date());
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <div style={{
-        height:'100%',
+    <div
+      style={{
+        height: "100%",
         backgroundImage:
-        "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
-    }}>
+          "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+      }}
+    >
       <Toolbar />
-      
-      <List>
-       
-      </List>
-      
+
+      <List></List>
+
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -58,7 +61,7 @@ function Dashboard(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box  sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -67,7 +70,7 @@ function Dashboard(props) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        
+        <Navigation />
       </AppBar>
       <Box
         component="nav"
@@ -116,6 +119,19 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
+        <Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={5}>
+              <Calendar
+                date={date}
+                setDate={setDate}>
+              </Calendar>
+            </Grid>
+            <Grid item xs={12} md={7}>
+              <ReviewAppointments date={date}></ReviewAppointments>
+            </Grid>
+          </Grid>
+        </Typography>
       </Box>
     </Box>
   );

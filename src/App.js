@@ -7,6 +7,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home/Home";
 import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
+
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 import Navigation from "./Pages/Shared/Navigation/Navigation";
 
@@ -25,6 +26,8 @@ function App() {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            
+            
           </Routes>
         </Router>
       </AuthProvider>
