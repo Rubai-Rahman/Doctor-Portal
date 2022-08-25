@@ -50,6 +50,7 @@ const useFirebase = () => {
       .then((userCredential) => {
         setAuthError("");
         const newUser = { email, displayName: name };
+        saveUser(email, name, "POST");
         setUser(newUser);
 
         updateProfile(auth.currentUser, {
@@ -74,7 +75,9 @@ const useFirebase = () => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         setAuthError("");
         const user = result.user;
-        // ...
+        saveUser(user.email, user.displayName, "PUT");
+        const destination = location?.state?.from || "/";
+        navigate(destination);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -100,6 +103,18 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, []);
 
+  //save user info
+
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch(`http://localhost:5000/users`, {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
+  };
   // logout
   const logOut = () => {
     setIsLoading(true);
