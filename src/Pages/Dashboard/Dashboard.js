@@ -12,12 +12,14 @@ import DashboardHome from "./DashboardHome/DashboardHome";
 import MakeAdmin from "./MakeAdmin/MakeAdmin";
 import AddDoctor from "./AddDoctor/AddDoctor";
 import { Button } from "@mui/material";
+import useAuth from "../../hooks/useAuth";
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { admin } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -37,13 +39,16 @@ function Dashboard(props) {
         <Link to="dashboardHome">
           <Button color="inherit">Dashboard</Button>
         </Link>
-
-        <Link to={`makeAdmin`}>
-          <Button color="inherit">Make Admin</Button>
-        </Link>
-        <Link to={`addDoctor`}>
-          <Button color="inherit">Add Doctor</Button>
-        </Link>
+        {admin && (
+          <Box>
+            <Link to={`makeAdmin`}>
+              <Button color="inherit">Make Admin</Button>
+            </Link>
+            <Link to={`addDoctor`}>
+              <Button color="inherit">Add Doctor</Button>
+            </Link>
+          </Box>
+        )}
       </List>
     </div>
   );
