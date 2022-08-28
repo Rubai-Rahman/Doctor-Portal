@@ -9,11 +9,16 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 const ReviewAppointments = ({ date }) => {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const [appointments, setAppointmets] = useState([]);
+  console.log(date);
   useEffect(() => {
     const url = `http://localhost:5000/appointments?email=${user.email}&date=${date}`;
-    fetch(url)
+    fetch(url, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setAppointmets(data));
   }, [date]);
@@ -36,7 +41,7 @@ const ReviewAppointments = ({ date }) => {
               <TableCell component="th" scope="row">
                 {appointment.patientName}
               </TableCell>
-              <TableCell align="right">{appointment.time}</TableCell>
+              <TableCell align="right">{appointment.date}</TableCell>
             </TableRow>
           ))}
         </TableBody>

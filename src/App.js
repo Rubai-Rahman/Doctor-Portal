@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import AuthProvider from "./contexts/AuthProvider";
+import AdminRoute from "./Pages/AdminRoute/AdminRute";
 
 import Appointment from "./Pages/Appointment/Appointment/Appointment";
 import AddDoctor from "./Pages/Dashboard/AddDoctor/AddDoctor";
@@ -27,7 +28,7 @@ function App() {
               <Route exact path="appointment" element={<Appointment />} />
               <Route exact path="dashboard/*" element={<Dashboard />} />
             </Route>
-
+            
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

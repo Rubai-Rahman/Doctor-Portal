@@ -36,7 +36,7 @@ function Dashboard(props) {
       <Toolbar />
 
       <List>
-        <Link to="dashboardHome">
+        <Link to="dashboard">
           <Button color="inherit">Dashboard</Button>
         </Link>
         {admin && (
@@ -117,7 +117,7 @@ function Dashboard(props) {
         <Toolbar />
 
         <Routes>
-          <Route path="dashboardHome" element={<DashboardHome />} />
+          <Route path="dashboard" element={<DashboardHome />} />
           <Route path="makeAdmin" element={<MakeAdmin />} />
           <Route path="addDoctor" element={<AddDoctor />} />
         </Routes>

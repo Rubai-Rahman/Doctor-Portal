@@ -50,7 +50,7 @@ const Navigation = () => {
             <Box>
               <Link
                 style={{ textDecoration: "none", fontSize: 20, color: "white" }}
-                to="/dashboard"
+                to="/dashboard/dashboard"
               >
                 <Button color="inherit">Dashboard</Button>
               </Link>
