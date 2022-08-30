@@ -4,13 +4,9 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
 import Toolbar from "@mui/material/Toolbar";
 import Navigation from "../Shared/Navigation/Navigation";
-import { Routes, Route, Link } from "react-router-dom";
-import DashboardHome from "./DashboardHome/DashboardHome";
-import MakeAdmin from "./MakeAdmin/MakeAdmin";
-import AddDoctor from "./AddDoctor/AddDoctor";
+import { Link, Outlet } from "react-router-dom";
 import { Button } from "@mui/material";
 import useAuth from "../../hooks/useAuth";
 
@@ -29,27 +25,74 @@ function Dashboard(props) {
     <div
       style={{
         height: "100%",
+        marginBottom:6,
         backgroundImage:
           "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
       }}
     >
       <Toolbar />
 
-      <List>
-        <Link to="dashboard">
-          <Button color="inherit">Dashboard</Button>
-        </Link>
-        {admin && (
-          <Box>
-            <Link to={`makeAdmin`}>
-              <Button color="inherit">Make Admin</Button>
-            </Link>
-            <Link to={`addDoctor`}>
-              <Button color="inherit">Add Doctor</Button>
-            </Link>
-          </Box>
-        )}
-      </List>
+      <Link style={{ textDecoration: "none"}} to="/appointment">
+        <Button
+          variant="contained"
+          style={{
+           marginBottom:4,
+           width:'120px',
+            backgroundColor: "#19D3AE",
+            backgroundImage:
+              "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+          }}
+        >
+          Appointment
+        </Button>
+      </Link>
+      <Link style={{ textDecoration: "none",margin:7 }} to="/dashboard">
+        <Button
+          variant="contained"
+          style={{
+            marginBottom:4,
+            width:'120px',
+            backgroundColor: "#19D3AE",
+            backgroundImage:
+              "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+          }}
+        >
+          DashBoard
+        </Button>
+      </Link>
+
+      {admin && (
+        <Box>
+          <Link style={{ textDecoration: "none" }} to={`/dashboard/makeAdmin`}>
+            <Button
+              variant="contained"
+              style={{
+                marginBottom:4,
+             
+                backgroundColor: "#19D3AE",
+                backgroundImage:
+                  "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+              }}
+            >
+              Make Admin
+            </Button>
+          </Link>
+          <Link style={{ textDecoration: "none" }} to={`/dashboard/addDoctor`}>
+            <Button
+              variant="contained"
+              style={{
+                marginBottom:4,
+             
+                backgroundColor: "#19D3AE",
+                backgroundImage:
+                  "linear-gradient(90deg, #19D3AE -22.5%, #0FCFEC 120.83%)",
+              }}
+            >
+              Add Doctor
+            </Button>
+          </Link>
+        </Box>
+      )}
     </div>
   );
 
@@ -115,12 +158,7 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-
-        <Routes>
-          <Route path="dashboard" element={<DashboardHome />} />
-          <Route path="makeAdmin" element={<MakeAdmin />} />
-          <Route path="addDoctor" element={<AddDoctor />} />
-        </Routes>
+        <Outlet></Outlet>
       </Box>
     </Box>
   );

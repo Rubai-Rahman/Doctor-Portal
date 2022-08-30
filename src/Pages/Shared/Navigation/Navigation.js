@@ -35,7 +35,7 @@ const Navigation = () => {
           </Typography>
           <Link
             style={{ textDecoration: "none", fontSize: 20, color: "white" }}
-            to="/"
+            to="/home"
           >
             <Button color="inherit">Home</Button>
           </Link>
@@ -50,7 +50,7 @@ const Navigation = () => {
             <Box>
               <Link
                 style={{ textDecoration: "none", fontSize: 20, color: "white" }}
-                to="/dashboard/dashboard"
+                to="/dashboard"
               >
                 <Button color="inherit">Dashboard</Button>
               </Link>
