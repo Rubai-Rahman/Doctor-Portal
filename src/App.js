@@ -14,6 +14,7 @@ import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
 
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
+import Footer from "./Pages/Shared/Footer/Footer";
 import Navigation from "./Pages/Shared/Navigation/Navigation";
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
+          <Footer/>
         </Router>
       </AuthProvider>
     </div>

@@ -113,7 +113,7 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://boiling-bastion-80849.herokuapp.com/users`, {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -137,7 +137,7 @@ const useFirebase = () => {
 
   // admin
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://boiling-bastion-80849.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);

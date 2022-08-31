@@ -14,7 +14,7 @@ const ReviewAppointments = ({ date }) => {
   const [appointments, setAppointmets] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/appointments?email=${user.email}&date=${date.toLocaleDateString()}`;
+    const url = `https://boiling-bastion-80849.herokuapp.com/appointments?email=${user.email}&date=${date.toLocaleDateString()}`;
     fetch(url, {
       headers: {
         authorization: `Bearer ${token}`,
